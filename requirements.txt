@@ -1,0 +1,7 @@
+# pip install fastapi uvicorn sqlalchemy passlib jose python-multipart
+fastapi 
+uvicorn 
+sqlalchemy 
+passlib 
+python-jose[cryptography]
+python-multipart
