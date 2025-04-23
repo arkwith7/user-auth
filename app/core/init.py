@@ -1,5 +1,7 @@
-# 순환 참조 방지를 위한 명시적 임포트
-# 순서가 중요합니다 - 의존성이 적은 것부터 임포트
+from app.core.db import Base, engine
+
+# 모든 모델 임포트
+# 이렇게 임포트하면 Base.metadata에 모델이 등록됩니다
 from app.models.user import User
 from app.models.token_usage import TokenUsage
 from app.models.embedding_usage import EmbeddingUsage
@@ -7,5 +9,8 @@ from app.models.document import Document
 from app.models.chunk import Chunk
 from app.models.conversation import Conversation, Message
 from app.models.citation import Citation
+# 기타 모델들...
 
-# 필요한 경우 다른 모델들도 여기서 임포트할 수 있습니다
+def init_db():
+    # 여기서 테이블 생성
+    Base.metadata.create_all(bind=engine)
